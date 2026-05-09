@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 import Toast from '../ui/Toast'
 import ModalManager from './ModalManager'
+import { useUIStore } from '../../store/uiStore'
 
 const MainLayout: React.FC = () => {
   const location = useLocation()
+  const { setSidebarOpen } = useUIStore()
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setSidebarOpen(false)
+      } else {
+        setSidebarOpen(true)
+      }
+    }
+
+    // Run once on mount to ensure correct state
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [setSidebarOpen])
   
   // Mapping paths to titles
   const getPageTitle = (path: string) => {

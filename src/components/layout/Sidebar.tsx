@@ -19,11 +19,22 @@ const Sidebar: React.FC = () => {
   ]
 
   return (
-    <aside
-      className={`fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-gray-900 shadow-xl transition-transform duration-300 transform ${
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } lg:relative lg:translate-x-0 flex flex-col border-r border-gray-100 dark:border-gray-800`}
-    >
+    <>
+      {/* Backdrop for mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden animate-in fade-in duration-300"
+          onClick={toggleSidebar}
+        />
+      )}
+
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 bg-white dark:bg-gray-900 shadow-xl transition-all duration-300 ease-in-out transform flex flex-col border-r border-gray-100 dark:border-gray-800 ${
+          isSidebarOpen 
+            ? 'translate-x-0 w-72' 
+            : '-translate-x-full lg:translate-x-0 lg:w-0 lg:border-none'
+        } lg:relative overflow-hidden`}
+      >
       {/* Brand */}
       <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center space-x-3">
         <div className="text-3xl">🌊</div>
@@ -103,6 +114,7 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
     </aside>
+    </>
   )
 }
 
