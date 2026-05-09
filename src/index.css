@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --sky: #2f9fe8;
+  --teal: #00c9a7;
+  --orange: #f7924a;
+  --rose: #f05a7e;
+  --gold: #fbbf3a;
+}
+
+@theme {
+  --color-sky: var(--sky);
+  --color-teal: var(--teal);
+  --color-orange: var(--orange);
+  --color-rose: var(--rose);
+  --color-gold: var(--gold);
+  --font-syne: "Syne", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-outfit bg-gray-50 text-gray-900;
+  }
+}
