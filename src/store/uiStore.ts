@@ -2,6 +2,7 @@ import { create } from 'zustand'
 
 interface UIState {
   isSidebarOpen: boolean
+  setSidebarOpen: (open: boolean) => void
   toggleSidebar: () => void
   theme: 'light' | 'dark'
   toggleTheme: () => void
@@ -21,7 +22,8 @@ interface UIState {
 }
 
 export const useUIStore = create<UIState>((set) => ({
-  isSidebarOpen: true,
+  isSidebarOpen: typeof window !== 'undefined' ? window.innerWidth >= 1024 : true,
+  setSidebarOpen: (open) => set({ isSidebarOpen: open }),
   toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
   
   theme: 'light',

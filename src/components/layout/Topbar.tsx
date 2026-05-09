@@ -13,7 +13,7 @@ const Topbar: React.FC<TopbarProps> = ({ title, subtitle }) => {
     <header className="h-20 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 flex items-center px-6 lg:px-10 sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-gray-900/80">
       <button 
         onClick={toggleSidebar}
-        className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-xl text-gray-900 dark:text-white"
+        className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-xl text-gray-900 dark:text-white"
       >
         ☰
       </button>
