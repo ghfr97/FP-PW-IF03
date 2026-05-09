@@ -1,25 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --sky: #2f9fe8;
-  --teal: #00c9a7;
-  --orange: #f7924a;
-  --rose: #f05a7e;
-  --gold: #fbbf3a;
-}
-
 @theme {
-  --color-sky: var(--sky);
-  --color-teal: var(--teal);
-  --color-orange: var(--orange);
-  --color-rose: var(--rose);
-  --color-gold: var(--gold);
+  --color-sky: #2f9fe8;
+  --color-teal: #00c9a7;
+  --color-orange: #f7924a;
+  --color-rose: #f05a7e;
+  --color-gold: #fbbf3a;
   --font-syne: "Syne", sans-serif;
   --font-outfit: "Outfit", sans-serif;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   body {
-    @apply font-outfit bg-gray-50 text-gray-900;
+    @apply font-outfit bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300;
   }
 }
