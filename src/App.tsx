@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from './components/layout/MainLayout'
+import { useUIStore } from './store/uiStore'
 
-// Lazy load pages (simulated for now)
+// Lazy load pages
 import Dashboard from './pages/Dashboard'
 import Orders from './pages/Orders'
 import Customers from './pages/Customers'
@@ -10,6 +12,16 @@ import Reports from './pages/Reports'
 import Settings from './pages/Settings'
 
 function App() {
+  const theme = useUIStore((state) => state.theme)
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
+
   return (
     <Router>
       <Routes>
