@@ -1,14 +1,15 @@
+import React from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 import Toast from '../ui/Toast'
 import ModalManager from './ModalManager'
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   const location = useLocation()
   
   // Mapping paths to titles
-  const getPageTitle = (path) => {
+  const getPageTitle = (path: string) => {
     switch (path) {
       case '/': return { title: 'Dashboard', subtitle: 'Overview' }
       case '/orders': return { title: 'Pesanan', subtitle: 'Manajemen' }
@@ -23,7 +24,7 @@ const MainLayout = () => {
   const { title, subtitle } = getPageTitle(location.pathname)
 
   return (
-    <div className="flex min-h-screen bg-gray-50 overflow-x-hidden">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-950 overflow-x-hidden transition-colors duration-300">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <Topbar title={title} subtitle={subtitle} />
